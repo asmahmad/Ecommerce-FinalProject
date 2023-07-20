@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SignIn - Ocean Prime SeaFood Restaurant</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Site CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="css/responsive.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+</head>
+<body>
+	<div th:replace="fragments::main-top"></div>
+	<!-- End Main Top -->
+
+	<!-- Start Main Top -->
+	<header class="main-top">
+		<div th:replace="fragments::main-header"></div>
+		<!-- Start Navigation -->
+
+	</header>
+	<!-- End Main Top -->
+
+	<!-- Start Top Search -->
+	<div th:replace="fragments::top-search"></div>
+	<!-- End Top Search -->
+
+	<!-- Start Slider -->
+	<div th:replace="fragments::slider"></div>
+	<div class="container">
+
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<img class="col-lg-5 d-none d-lg-block bg-register-image"
+						src="images/profile.jpg" alt="Registration Profile Image">
+
+					<div class="col-lg-7">
+						<div class="p-5">
+							<div class="text-center">
+								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+							</div>
+							<div th:if="${error}" class="text-center alert alert-danger"
+								th:text="${error}"></div>
+							<p th:text="${error}"></p>
+
+							<div th:if="${username}" class="text-center alert-warning">
+							</div>
+							<p th:text="${username}"></p>
+							<div th:if="${password}" class="text-center alert-warning">
+								<p th:text="${password}"></p>
+							</div>
+							<div th:if="${success}">
+								<p class="alert alert-success" th:text="${success}"></p>
+							</div>
+							<p th:text="${success}"></p>
+							<div th:if="${passwordError}">
+								<p class="alert alert-danger" th:text="${passwordError}"></p>
+							</div>
+
+							<form th:action="@{/do-register}" method="post"
+								th:object="${customerDto}" class="signin-form">
+								<div class="form-group">
+									<input type="text" class="form-control" p
+										th:field="*{firstName}" placeholder="First Name" name="">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('firstName')}"
+									th:errors="*{firstName}"></div>
+								<div class="form-group">
+									<input type="text" class="form-control" p
+										th:field="*{lastName}" placeholder="Last Name" name="">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('lastName')}"
+									th:errors="*{lastName}"></div>
+								<div class="form-group">
+									<input type="text" class="form-control" p
+										th:field="*{username}" placeholder="E-mail" name="">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('username')}"
+									th:errors="*{lastName}"></div>
+								<div class="form-group">
+									<input id="password-field" type="password" class="form-control" th:field="*{password}" 
+										placeholder="Password" required="" name="password"> <span
+										toggle="#password-field"
+										class="fa fa-fw fa-eye field-icon toggle-password"></span>
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}"></div>
+								<div class="form-group">
+									<input id="repeat-password-field" type="password"
+										class="form-control" th:field="*{repeatPassword}" placeholder="Repeat Password"
+										required="" name="repeatpassword"> <span
+										toggle="#password-field"
+										class="fa fa-fw fa-eye field-icon toggle-password"></span>
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('repeatPassword')}"
+									th:errors="*{repeatPassword}"></div>
+								<div class="form-group">
+									<button type="submit"
+										class="form-control btn btn-primary submit px-3">Sign
+										Up</button>
+								</div>
+								<div class="form-group d-md-flex">
+									<div class="w-50">
+										<div class="input-form">
+											<p>
+												Already Have An Account ? <a th:href="@{/login}">SignIn
+													now! </a>
+											</p>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="social-login text-center">
+									<span class="d-block text-center my-4 text-muted"> -Or
+										SignIn with Social Network Account-</span> <a
+										href="https://www.facebook.com" class="facebook"> <i
+										class="fab fa-facebook-f"></i>
+									</a> <a href="https://twitter.com" class="twitter"> <i
+										class="fab fa-twitter"></i>
+									</a> <a href="https://gmail.com" class="google"> <i
+										class="fab fa-google"></i>
+									</a>
+
+								</div>
+							</form>
+							<hr>
+							<div class="text-center">
+								<a class="small" th:href="@{/forgot-password}"
+									href="forgot-password.html">Forgot Password?</a>
+							</div>
+							<div class="text-center">
+								<a class="small" th:href="@{/login}">Already have an
+									account? Login!</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div th:replace="fragments::script"></div>
+	<script>
+		// Function to handle toggle password visibility
+		function togglePassword() {
+			var passwordField = document.getElementById("password-field");
+			var repeatPasswordField = document
+					.getElementById("repeat-password-field");
+			var togglePasswordIcon = document.querySelector(".toggle-password");
+
+			if (passwordField.type === "password") {
+				passwordField.type = "text";
+				repeatPasswordField.type = "text";
+				togglePasswordIcon.classList.remove("fa-eye");
+				togglePasswordIcon.classList.add("fa-eye-slash");
+			} else {
+				passwordField.type = "password";
+				repeatPasswordField.type = "password";
+				togglePasswordIcon.classList.remove("fa-eye-slash");
+				togglePasswordIcon.classList.add("fa-eye");
+			}
+		}
+
+		// Attach event listener to the toggle icon
+		var togglePasswordIcon = document.querySelector(".toggle-password");
+		togglePasswordIcon.addEventListener("click", togglePassword);
+	</script>
+	<!-- Start All Title Box -->
+	<div th:replace="fragments::instagram-box"></div>
+	<!-- End All Title Box -->
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+	<!-- ALL JS FILES -->
+	<div th:replace="fragments::script"></div>
+</body>
+
+</html>

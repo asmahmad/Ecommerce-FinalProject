@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SignIn - Ocean Prime SeaFood Restaurant</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Site CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="css/responsive.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+</head>
+
+<body>
+	<div th:replace="fragments::main-top"></div>
+	<!-- End Main Top -->
+
+	<!-- Start Main Top -->
+	<header class="main-top">
+		<div th:replace="fragments::main-header"></div>
+		<!-- Start Navigation -->
+
+	</header>
+	<!-- End Main Top -->
+
+	<!-- Start Top Search -->
+	<div th:replace="fragments::top-search"></div>
+	<!-- End Top Search -->
+
+	<!-- Start Slider -->
+	<div th:replace="fragments::slider"></div>
+
+	<section id="login-form">
+		<div class="container">
+
+			<!-- Outer Row -->
+			<div class="row justify-content-center">
+
+				<div class="col-xl-10 col-lg-12 col-md-9">
+
+					<div class="card o-hidden border-0 shadow-lg my-5">
+						<div class="card-body p-0">
+							<!-- Nested Row within Card Body -->
+							<div class="row">
+								<img class="col-lg-5 d-none d-lg-block bg-register-image"
+									src="images/Auth.jpeg" alt="Description of your image">
+								<div class="col-lg-6">
+									<div class="p-5">
+										<div class="text-center">
+											<h1 class="h4 text-gray-900 mb-4">SignIn:</h1>
+										</div>
+										<div th:if="${param.error}"
+											class="alert alert-danger text-center">Invalid username
+											or password</div>
+										<div th:if="${param.logout}"
+											class="alert alert-success text-center">You have been
+											logged out!</div>
+										<form th:action="@{/do-login}" method="post"
+											class="signin-form">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Email"
+													required="" name="username">
+											</div>
+											<div class="form-group">
+												<input id="password-field" type="password"
+													class="form-control" placeholder="Password" required=""
+													name="password"> <span toggle="#password-field"
+													class="fa fa-fw fa-eye field-icon toggle-password"></span>
+											</div>
+											<div class="form-group">
+												<button type="submit"
+													class="form-control btn btn-primary submit px-3">Sign
+													In</button>
+											</div>
+											<div class="form-group d-md-flex">
+												<div class="w-50">
+													<div class="input-form">
+														<p>
+															Do You Already Have An Account ? <a
+																th:href="@{/register}">Sign up now! </a>
+														</p>
+													</div>
+												</div>
+
+											</div>
+											
+											<div class="social-login text-center">
+												<span class="d-block text-center my-4 text-muted"> -Or SignIn with Social Network Account-</span> <a
+													href="https://www.facebook.com"
+													class="facebook"> <i class="fab fa-facebook-f"></i>
+												</a> <a
+													href="https://twitter.com"
+													class="twitter"> <i class="fab fa-twitter"></i>
+												</a> <a
+													href="https://gmail.com"
+													class="google"> <i class="fab fa-google"></i>
+												</a>
+
+											</div>
+										</form>
+										<!-- <ul class="icon-dang-nhap">
+											<li><i class="fab fa-facebook-f"></i></i></li>
+											<li><i class="fab fa-google"></i></li>
+											<li><i class="fab fa-weibo"></i></li>
+										</ul>
+									</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+	<!-- Start All Title Box -->
+	<div th:replace="fragments::instagram-box"></div>
+	<!-- End All Title Box -->
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+	<!-- ALL JS FILES -->
+	<div th:replace="fragments::script"></div>
+</body>
+
+</html>

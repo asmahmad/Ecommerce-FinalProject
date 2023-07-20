@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<head th:replace="fragments::head">
+
+
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<!-- Start Main Top -->
+	<div th:replace="fragments::main-top"></div>
+	<!-- End Main Top -->
+
+	<!-- Start Main Top -->
+	<header th:replace="fragments::main-header"> </header>
+	<!-- End Main Top -->
+
+	<!-- Start Top Search -->
+	<div th:replace="fragments::top-search "></div>
+	<!-- End Top Search -->
+
+	<!-- Start All Title Box -->
+	<div th:replace="fragments::instagram-box"></div>
+	<!-- End All Title Box -->
+
+	<!-- Update Personal Information -->
+	<div class="cart-box-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="table-main table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="order-date">Order Date</th>
+									<th>Delivery Date</th>
+									<th class="price-pr">Order Status</th>
+									<th class="quantity-box">Total Price</th>
+									<th class="total-pr">Payment Method</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="order: ${orders}" >
+									<td class="order-date"><span><b
+											th:text="${order.orderDate}"></b></span></td>
+									<td class="name-pr" th:if="${order.deliveryDate != null}">
+										<p th:text="${order.deliveryDate}"></p>
+									</td>
+									<td class="name-pr" th:if="${order.deliveryDate == null}">>
+										<p>Waiting for the</p>
+									</td>
+									<td class="price-pr">
+										<p th:tect="${order.orderStatus}"></p>
+									</td>
+
+									<td class="total-pr">
+										<p style="color: red" th:text="${'$' + order.totalPrice}"></p>
+									</td>
+									<td class="total-pr"><span style="color: black">Cash
+									</span></td>
+									<td>
+										<button class="button-cancel">Cancel</button>
+									</td>
+									<!-- 	</a>
+                                    </td> -->
+								</tr>
+								<!-- <tr>
+									<td class="order-date"><B>27-1-2022</B></td>
+									<td class="name-pr"><a href="#"> 28-1-2022 </a></td>
+									<td class="price-pr">
+										<p>To Ship</p>
+									</td>
+									<td class="quantity-box">7</td>
+									<td class="total-pr">
+										<p style="color: red">$ 60.0</p>
+									</td>
+									<td class="total-pr"><a href="#"> <span>Cash on
+												Delivery</span>
+
+											<button class="button-cancel">Cancel</button>
+								</tr> -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			</section>
+
+
+			<a href="#" id="back-to-top" title="Back to top"
+				style="display: none;">&uarr;</a>
+
+
+
+			<!-- ALL JS FILES -->
+			<div th:replace="fragments::script"></div>
+</body>
+
+</html>
