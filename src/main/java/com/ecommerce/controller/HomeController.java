@@ -29,7 +29,7 @@ public class HomeController {
 	private CustomerService customerService;
 	private CategoryService categoryService;
 
-	@RequestMapping(value = { "/index" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/index" , "/"}, method = RequestMethod.GET)
 	public String home(Model model, Principal principal, HttpSession session) {
 
 		if (principal != null) {
