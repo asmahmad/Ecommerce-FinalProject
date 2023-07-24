@@ -56,4 +56,8 @@ public class HomeController {
 		model.addAttribute("products", productDtos);
 		return "index";
 	}
+	@GetMapping("/")
+    public String root() {
+        return "redirect:/shop/";
+    }
 }
