@@ -52,6 +52,23 @@ public class HomeController {
 	public String index(Model model) {
 		List<Category> categories = categoryService.findAll();
 		List<ProductDto> productDtos = productService.findAll();
+		// Print categories
+		System.out.println("Categories:");
+		for (Category category : categories) {
+		    System.out.println("Category ID: " + category.getId());
+		    System.out.println("Category Name: " + category.getName());
+		    // Add other category properties you want to print
+		    System.out.println("-----------------------");
+		}
+
+		// Print products
+		System.out.println("Products:");
+		for (ProductDto productDto : productDtos) {
+		    System.out.println("Product ID: " + productDto.getId());
+		    System.out.println("Product Name: " + productDto.getName());
+		    // Add other product properties you want to print
+		    System.out.println("-----------------------");
+		}
 		model.addAttribute("categories", categories);
 		model.addAttribute("products", productDtos);
 		return "index";
