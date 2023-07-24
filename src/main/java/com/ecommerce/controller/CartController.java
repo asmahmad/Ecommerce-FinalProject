@@ -93,9 +93,13 @@ public class CartController {
 			return "redirect:/login";
 		} else {
 			String username = principal.getName();
+			System.out.println(username);
 			Customer customer = customerService.findByUsername(username);
+			
 			Product product = productService.getProductById(productId);
+			
 			ShoppingCart cart = cartService.deleteItemFromCart(product, customer);
+		
 			model.addAttribute("shoppingCart", cart);
 			return "redirect:/cart";
 		}
